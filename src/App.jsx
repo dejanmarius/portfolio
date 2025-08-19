@@ -170,8 +170,7 @@ const TopBar = () => (
   <div className="sticky top-0 z-40 backdrop-blur-xl bg-black/40 border-b border-zinc-800/60">
     <div className="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between h-14">
       <div className="flex items-center gap-3">
-        <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-  <span className="text-zinc-300 text-sm">Available for projects 2025</span>
+        {/* punctul verde eliminat */}
       </div>
       <div className="flex items-center gap-2">
         <Button variant="ghost" asChild>
@@ -380,16 +379,11 @@ export default function App() {
       <Section id="experience" title="Experience" icon={Briefcase}>
         <div className="relative pl-6 before:content-[''] before:absolute before:top-0 before:left-2 before:w-1 before:h-full before:bg-zinc-800 before:rounded-full">
           {experience.map((e, idx) => {
-            const [ref, controls] = useInViewAnimation();
             // Grupare specială pentru Firma X cu două roluri consecutive
             if (e.company === "Societatea Națională de Informatică SA" && e.roles) {
               return (
-                <motion.div
+                <div
                   key={e.company}
-                  ref={ref}
-                  initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                  animate={controls}
-                  transition={{ duration: 0.7, delay: idx * 0.15, type: 'spring', bounce: 0.25 }}
                   className="relative mb-10"
                 >
                   <span className="absolute -left-1.5 top-4 w-3 h-3 bg-emerald-500 border-4 border-zinc-950 rounded-full shadow-lg"></span>
@@ -400,12 +394,8 @@ export default function App() {
                     <CardContent>
                       <div className="flex flex-col gap-4">
                         {e.roles.map((r, i) => (
-                          <motion.div
+                          <div
                             key={r.role}
-                            initial={{ opacity: 0, x: 40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.5, delay: i * 0.15 }}
                             className={`relative pl-4 py-3 border-l-4 ${i === 0 ? 'border-emerald-500' : 'border-emerald-700'} bg-zinc-900/40 rounded-xl mb-2`}
                           >
                             <div className="flex items-center justify-between mb-1 pr-2">
@@ -442,22 +432,18 @@ export default function App() {
                                 <li key={idx2}>{b}</li>
                               ))}
                             </ul>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               );
             }
             // Restul experienței (roluri simple)
             return (
-              <motion.div
+              <div
                 key={e.role + e.company}
-                ref={ref}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={controls}
-                transition={{ duration: 0.7, delay: idx * 0.15, type: 'spring', bounce: 0.25 }}
                 className="relative mb-10 last:mb-0"
               >
                 <span className="absolute -left-1.5 top-4 w-3 h-3 bg-emerald-500 border-4 border-zinc-950 rounded-full shadow-lg"></span>
@@ -499,7 +485,7 @@ export default function App() {
                     </ul>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -510,14 +496,9 @@ export default function App() {
       <Section id="education" title="Education" icon={GraduationCap}>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {education.map((ed, idx) => {
-            const [ref, controls] = useInViewAnimation();
             return (
-              <motion.div
+              <div
                 key={ed.name}
-                ref={ref}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={controls}
-                transition={{ duration: 0.7, delay: idx * 0.15, type: 'spring', bounce: 0.25 }}
               >
                 <Card className={(ed.inProgress ? 'border-emerald-500 shadow-emerald-200 ' : '') + 'h-full min-h-[180px] flex flex-col justify-between'}>
                   <CardHeader>
@@ -542,7 +523,7 @@ export default function App() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -552,14 +533,10 @@ export default function App() {
       <Section id="courses" title="Courses" icon={Sparkles}>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course, idx) => {
-            const [ref, controls] = useInViewAnimation();
+            // fără animații
             return (
-              <motion.div
+              <div
                 key={course.title}
-                ref={ref}
-                initial={{ opacity: 0, y: 60, scale: 0.95 }}
-                animate={controls}
-                transition={{ duration: 0.7, delay: idx * 0.15, type: 'spring', bounce: 0.25 }}
               >
                 <Card className="h-full min-h-[180px] flex flex-col justify-between">
                   <CardHeader>
@@ -593,7 +570,7 @@ export default function App() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -602,14 +579,8 @@ export default function App() {
       {/* CONTACT */}
       <Section id="contact" title="Contact" icon={Mail}>
         {(() => {
-          const [ref, controls] = useInViewAnimation();
           return (
-            <motion.div
-              ref={ref}
-              initial={{ opacity: 0, y: 60, scale: 0.95 }}
-              animate={controls}
-              transition={{ duration: 0.7, type: 'spring', bounce: 0.25 }}
-            >
+            <div>
               <div className="grid md:grid-cols-5 gap-6 items-start">
                 <div className="md:col-span-3">
                   <Card>
@@ -657,7 +628,7 @@ export default function App() {
                   </Card>
                 </div>
               </div>
-            </motion.div>
+            </div>
           );
         })()}
       </Section>
