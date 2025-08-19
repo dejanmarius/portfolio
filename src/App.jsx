@@ -270,7 +270,7 @@ export default function App() {
                   <a href="#projects"><Rocket className="w-4 h-4 mr-2"/>View projects</a>
                 </Button>
                 <Button variant="outline" className="rounded-2xl border-zinc-700 text-zinc-200" asChild>
-                    <a href="/Resume.pdf" download><Download className="w-4 h-4 mr-2"/>Download CV</a>
+                    <a href={`${import.meta.env.BASE_URL}Resume.pdf`} download><Download className="w-4 h-4 mr-2"/>Download CV</a>
                 </Button>
               </div>
 
